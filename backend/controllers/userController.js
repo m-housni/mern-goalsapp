@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const asyncHandler = require('express-async-handler')
-const User = require('../models/userModel')
+const jwt = require('jsonwebtoken') // JSON Web Token is a node module that allows us to create and verify tokens
+const bcrypt = require('bcryptjs') // Bcrypt is a node module that allows us to hash passwords
+const asyncHandler = require('express-async-handler') // Express Async Handler is a node module that allows us to use async/await in our routes
+const User = require('../models/userModel') // Import the user model
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -23,8 +23,8 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   // Hash password
-  const salt = await bcrypt.genSalt(10)
-  const hashedPassword = await bcrypt.hash(password, salt)
+  const salt = await bcrypt.genSalt(10) // Generate a salt
+  const hashedPassword = await bcrypt.hash(password, salt) // Hash the password
 
   // Create user
   const user = await User.create({
@@ -50,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body 
 
   // Check for user email
   const user = await User.findOne({ email })

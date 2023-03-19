@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose') // Mongoose is a node module that allows us to work with MongoDB
 
 const userSchema = mongoose.Schema(
   {
@@ -21,4 +21,4 @@ const userSchema = mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema) // Export the model
